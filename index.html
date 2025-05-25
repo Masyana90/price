@@ -410,11 +410,11 @@
 
     const message = `🦶 Запись на педикюр:\n👤 Имя: ${name}\n📞 Телефон: ${phone}\n📅 Дата: ${date}\n⏰ Время: ${time}`;
 
-    fetch("https://api.telegram.org/bot<ТОКЕН>/sendMessage", {
+    fetch("https://api.telegram.org/bot7673985541:AAH2PnkO-TW1i09ZSHFwMLa7Gj8NghOZi14/sendMessage", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        chat_id: "<CHAT_ID>",
+        chat_id: "2091631815",
         text: message
       })
     })
