@@ -349,10 +349,9 @@
 <section id="schedule">
   <h2>Расписание</h2>
   <table>
-    <tr><td>Рабочий день:</td><td>Среда</td></tr>
+    <tr><td>Рабочий день:</td><td>Понедельник, пятница и суббота</td></tr>
     <tr><td>Время приема:</td><td>10:00, 12:00, 14:00, 16:00, 18:00</td></tr>
     <tr><td>Отпуск:</td><td>Июль</td></tr>
-    <tr><td>Выходные:</td><td>Новый год, Пасха</td></tr>
   </table>
 </section>
 
@@ -367,28 +366,18 @@
   <h2>Запись на прием</h2>
   <div class="contact-container">
     <div class="form-container">
-      <form action="#" method="post">
-        <label for="name">Имя</label>
-        <input type="text" id="name" name="name" placeholder="Ваше имя" required>
-
-        <label for="phone">Телефон</label>
-        <input type="tel" id="phone" name="phone" placeholder="Ваш телефон" required>
-
-        <label for="date">Дата</label>
-        <input type="date" id="date" name="date" required>
-
-        <label for="time">Время</label>
-        <select id="time" name="time" required>
-          <option value="" disabled selected>Выберите время</option>
-          <option>10:00</option>
-          <option>12:00</option>
-          <option>14:00</option>
-          <option>16:00</option>
-          <option>18:00</option>
+      <form id="tg-form">
+        <input type="text" name="name" placeholder="Ваше имя" required />
+        <input type="tel" name="phone" placeholder="Ваш телефон" required />
+        <input type="date" name="date" id="date" required />
+        <select name="time" required>
+          <option disabled selected>Выберите время</option>
+          <option>10:00</option><option>12:00</option><option>14:00</option><option>16:00</option><option>18:00</option>
         </select>
-
-        <input type="submit" value="Записаться">
+        <input type="submit" value="Записаться" />
+        <p id="status" style="margin-top: 10px; color: green;"></p>
       </form>
+
     </div>
     <div class="social-container">
       <p>Или свяжитесь в соцсетях:</p>
@@ -399,6 +388,50 @@
     </div>
   </div>
 </section>
+
+<script>
+  const allowedDays = [1, 5, 6]; // Пн, Пт, Сб
+
+  document.getElementById("date").addEventListener("input", function () {
+    const day = new Date(this.value).getDay();
+    if (!allowedDays.includes(day)) {
+      alert("Вы можете записаться только на понедельник, пятницу или субботу.");
+      this.value = "";
+    }
+  });
+
+  document.getElementById("tg-form").addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = this.name.value.trim();
+    const phone = this.phone.value.trim();
+    const date = this.date.value;
+    const time = this.time.value;
+
+    const message = `🦶 Запись на педикюр:\n👤 Имя: ${name}\n📞 Телефон: ${phone}\n📅 Дата: ${date}\n⏰ Время: ${time}`;
+
+    fetch("https://api.telegram.org/bot<ТОКЕН>/sendMessage", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        chat_id: "<CHAT_ID>",
+        text: message
+      })
+    })
+            .then(res => {
+              if (res.ok) {
+                document.getElementById("status").textContent = "✅ Запрос отправлен!";
+                this.reset();
+              } else {
+                document.getElementById("status").textContent = "❌ Ошибка при отправке.";
+              }
+            })
+            .catch(() => {
+              document.getElementById("status").textContent = "❌ Не удалось отправить сообщение.";
+            });
+  });
+</script>
+
 
 </body>
 </html>
