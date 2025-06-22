@@ -11,9 +11,6 @@ header {
   box-shadow: none;
   position: relative;
 }
-@media (max-width: 650px) {
-  header { position: static !important; }
-}
 header nav {
   display: flex;
   justify-content: center;
@@ -33,6 +30,39 @@ header nav a.active {
   color: #a482ff;
   text-shadow: 0 0 10px #964fff, 0 0 20px #00ffd0aa;
 }
+
+/* HERO SECTION */
+.hero-section {
+  text-align: center;
+  margin: 40px 0 32px 0;
+}
+.hero-section h1.gradient-title {
+  font-size: 3em;
+  margin-bottom: 18px;
+}
+.hero-subblock {
+  display: inline-block;
+  background: rgba(15,8,32, 0.84);
+  border: 2px solid #2ad2ff;
+  border-radius: 22px;
+  padding: 24px 36px 18px 36px;
+  margin-bottom: 8px;
+  box-shadow: 0 0 40px #964fff33;
+  font-size: 1.13em;
+}
+.hero-subblock h2 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-weight: 500;
+  color: #fff;
+  font-size: 1.3em;
+}
+.hero-subblock p {
+  margin: 0;
+  color: #fff;
+}
+
+/* Градиентные заголовки */
 .gradient-title {
   background: linear-gradient(90deg,#2ad2ff,#964fff 60%,#2ad2ff 100%);
   -webkit-background-clip: text;
@@ -40,7 +70,12 @@ header nav a.active {
   font-weight: 700;
   font-size: 2em;
   margin-bottom: 26px;
+  text-align: center;
+  display: block;
+  width: 100%;
 }
+
+/* Секции и блоки */
 .section {
   padding: 48px 20px 40px 20px;
   max-width: 980px;
@@ -187,22 +222,20 @@ footer {
   margin-top: 30px;
   border-top: 1px solid #372b51;
 }
+
+/* Адаптив */
 @media (max-width: 1050px) {
   .services-grid { flex-direction: column; align-items: center; }
 }
 @media (max-width: 700px) {
   .service-card { width: 100%; }
 }
-@media (max-width: 600px) {
-  header nav { flex-direction: column; gap: 9px; padding: 10px 0 2px 0;}
-  .section { padding: 22px 6px 12px 6px; }
-}
-.hero-section {
-  text-align: center;
-  margin: 40px 0 32px 0;
-}
-@media (max-width: 600px) {
+@media (max-width: 650px) {
+  header nav { display: none !important; }
   .hero-section { margin: 24px 0 18px 0; }
-  .hero-section h1 { font-size: 1.4em !important; }
-  .hero-section h2 { font-size: 1.05em !important; }
+  .hero-section h1.gradient-title { font-size: 1.5em !important; }
+  .hero-subblock { padding: 14px 6vw 9px 6vw; font-size: 1em; }
+}
+@media (max-width: 600px) {
+  .section { padding: 22px 6px 12px 6px; }
 }
