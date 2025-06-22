@@ -197,3 +197,12 @@ footer {
   header nav { flex-direction: column; gap: 9px; padding: 10px 0 2px 0;}
   .section { padding: 22px 6px 12px 6px; }
 }
+.hero-section {
+  text-align: center;
+  margin: 40px 0 32px 0;
+}
+@media (max-width: 600px) {
+  .hero-section { margin: 24px 0 18px 0; }
+  .hero-section h1 { font-size: 1.4em !important; }
+  .hero-section h2 { font-size: 1.05em !important; }
+}
