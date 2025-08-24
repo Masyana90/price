@@ -239,3 +239,32 @@ footer {
 @media (max-width: 600px) {
   .section { padding: 22px 6px 12px 6px; }
 }
+/* Удобные и адаптивные поля формы */
+#contact form input,
+#contact form select,
+#contact form textarea {
+  width: 100%;
+  font-size: 16px;        /* чтоб на iOS не зумило */
+  padding: 14px 16px;
+  border-radius: 12px;
+  box-sizing: border-box;
+}
+
+/* Большее поле комментария + возможность растягивать по вертикали */
+#contact form textarea {
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.5;
+}
+
+/* Подсказка под селектом */
+#contact .hint {
+  margin: 6px 2px 12px;
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+/* Мобильная подстройка */
+@media (max-width: 480px) {
+  #contact form textarea { min-height: 100px; }
+}
