@@ -166,18 +166,26 @@
   </div>
 </section>
 <section id="contact" class="section">
-  <h2 class="gradient-title">Запись на прием</h2>
+  <h2 class="gradient-title">Оставьте заявку</h2>
+  <p class="info-text" style="margin:8px 0 16px;line-height:1.5">
+    Я принимаю по <b>понедельникам, пятницам и субботам</b>.  
+    Просто оставьте контакты — и я сам свяжусь с вами для согласования удобного времени.
+  </p>
+
   <form id="tg-form">
     <input type="text" name="name" placeholder="Ваше имя" required />
     <input type="tel" name="phone" placeholder="Ваш телефон" required />
-    <input type="date" name="date" id="date" required />
-    <select name="time" required>
-      <option disabled selected>Выберите время</option>
-      <option>10:00</option><option>12:00</option><option>14:00</option><option>16:00</option><option>18:00</option>
+    <select name="preferred_day">
+      <option value="" selected>Предпочтительный день (необязательно)</option>
+      <option>Понедельник</option>
+      <option>Пятница</option>
+      <option>Суббота</option>
     </select>
-    <input type="submit" value="Записаться" />
-    <p id="status" style="margin-top: 10px; color: #00ffd0;"></p>
+    <textarea name="comment" placeholder="Пожелания / комментарий (необязательно)"></textarea>
+    <input type="submit" value="Оставить заявку" />
+    <p id="status" style="margin-top:10px;color:#00ffd0;"></p>
   </form>
+
   <div class="social">
     <a href="https://vk.com/maria_masyana" target="_blank">VK</a> |
     <a href="https://telegram.me/Maria_Masyana" target="_blank">Telegram</a> |
@@ -186,51 +194,12 @@
     <a href="tel:+79215774616" target="_blank">Телефон</a>
   </div>
 </section>
-</main>
+
 <footer>
   <p>© 2025 Мария Колесник — подолог</p>
 </footer>
-<script>
-  // Дни только Пн, Пт, Сб
-  const allowedDays = [1, 5, 6];
-  document.getElementById("date").addEventListener("input", function () {
-    const day = new Date(this.value).getDay();
-    if (!allowedDays.includes(day)) {
-      alert("Вы можете записаться только на понедельник, пятницу или субботу.");
-      this.value = "";
-    }
-  });
 
-  document.getElementById("tg-form").addEventListener("submit", function(e) {
-    e.preventDefault();
-
-    const name = this.name.value.trim();
-    const phone = this.phone.value.trim();
-    const date = this.date.value;
-    const time = this.time.value;
-
-    const message = `🦶 Запись на педикюр:%0A👤 Имя: ${name}%0A📞 Телефон: ${phone}%0A📅 Дата: ${date}%0A⏰ Время: ${time}`;
-
-    fetch("https://api.telegram.org/bot7673985541:AAH2PnkO-TW1i09ZSHFwMLa7Gj8NghOZi14/sendMessage", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        chat_id: "2091631815",
-        text: message
-      })
-    })
-    .then(res => {
-      if (res.ok) {
-        document.getElementById("status").textContent = "✅ Запрос отправлен!";
-        this.reset();
-      } else {
-        document.getElementById("status").textContent = "❌ Ошибка при отправке.";
-      }
-    })
-    .catch(() => {
-      document.getElementById("status").textContent = "❌ Не удалось отправить сообщение.";
-    });
-  });
-</script>
+<!-- Подключение JS -->
+<script src="script.js"></script>
 </body>
 </html>
