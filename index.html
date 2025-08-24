@@ -173,17 +173,20 @@
   </p>
 
   <form id="tg-form">
-    <input type="text" name="name" placeholder="Ваше имя" required />
-    <input type="tel" name="phone" placeholder="Ваш телефон" required />
-    <select name="preferred_day">
-      <option value="" selected>Предпочтительный день (необязательно)</option>
-      <option>Понедельник</option>
-      <option>Пятница</option>
-      <option>Суббота</option>
-    </select>
-    <textarea name="comment" placeholder="Пожелания / комментарий (необязательно)"></textarea>
-    <input type="submit" value="Оставить заявку" />
-    <p id="status" style="margin-top:10px;color:#00ffd0;"></p>
+<input type="text" name="name" placeholder="Ваше имя" required />
+<input type="tel" name="phone" placeholder="Ваш телефон" required />
+
+<select name="preferred_day" aria-label="Предпочтительный день">
+  <option value="" selected>День (необязательно)</option>
+  <option>Понедельник</option>
+  <option>Пятница</option>
+  <option>Суббота</option>
+</select>
+<p class="hint">Работаю: Пн, Пт, Сб. Свяжусь и назначу время.</p>
+
+<textarea name="comment" rows="5" placeholder="Пожелания / комментарий (необязательно)"></textarea>
+<input type="submit" value="Оставить заявку" />
+<p id="status" style="margin-top:10px;color:#00ffd0;"></p>
   </form>
 
   <div class="social">
