@@ -1,209 +1,1451 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Записаться на медицинский педикюр" />
+  <meta name="author" content="Мария" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Записаться на медицинский педикюр" />
+  <meta property="og:title" content="Понедельник,Пятница и Суббота с 10 до 20" />
+  <meta property="og:description" content="Женский и мужской педикюр во Всеволожске" />
+  <meta property="og:image" content="maria.jpg" />
+  <meta property="og:image:alt" content="Записаться на медицинский педикюр" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:url" content="https://masyana90.github.io/price/" />
+  <link rel="canonical" href="https://masyana90.github.io/price/" />
   <title>Подология — Мария Колесник</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet"/>
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Prata&display=swap"
+    rel="stylesheet"
+  />
+  <style>
+    :root {
+      --rose-bg: #fff9fc;
+      --rose-soft: #fff1f7;
+      --rose-mid: #f9d3e2;
+      --rose-strong: #cc6f98;
+      --rose-deep: #9b3b65;
+      --ink: #322532;
+      --muted: #695768;
+      --line: rgba(155, 59, 101, 0.2);
+      --card: rgba(255, 255, 255, 0.82);
+      --radius-s: 16px;
+      --radius-m: 24px;
+      --radius-l: 36px;
+      --shadow-soft: 0 18px 40px rgba(112, 43, 75, 0.12);
+      --shadow-hero: 0 36px 90px rgba(107, 41, 72, 0.22);
+      --container: min(1180px, calc(100% - 48px));
+      --header-h: 84px;
+      --ease: 0.35s cubic-bezier(0.24, 0.74, 0.24, 1);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: calc(var(--header-h) + 12px);
+    }
+
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-family: "Manrope", "Segoe UI", sans-serif;
+      color: var(--ink);
+      line-height: 1.6;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(255, 231, 241, 0.92), transparent 34%),
+        radial-gradient(circle at 92% 6%, rgba(244, 193, 216, 0.7), transparent 32%),
+        linear-gradient(180deg, #fffafe 0%, #fff4fa 45%, #fff9fd 100%);
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      z-index: -2;
+      pointer-events: none;
+      border-radius: 50%;
+      filter: blur(62px);
+      opacity: 0.86;
+    }
+
+    body::before {
+      width: 320px;
+      height: 320px;
+      top: -130px;
+      left: -120px;
+      background: rgba(255, 214, 231, 0.88);
+      animation: float 14s ease-in-out infinite;
+    }
+
+    body::after {
+      width: 360px;
+      height: 360px;
+      right: -120px;
+      bottom: -150px;
+      background: rgba(238, 176, 205, 0.62);
+      animation: float 15s ease-in-out infinite reverse;
+    }
+
+    @keyframes float {
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-18px);
+      }
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .container {
+      width: var(--container);
+      margin: 0 auto;
+    }
+
+    .section {
+      padding: clamp(68px, 10vw, 112px) 0;
+      position: relative;
+    }
+
+    .gradient-title {
+      font-family: "Prata", Georgia, serif;
+      background: linear-gradient(120deg, #b75382, #8e355f);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.02em;
+    }
+
+    .section-title {
+      font-family: "Prata", Georgia, serif;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      line-height: 1.08;
+      margin-bottom: 14px;
+      letter-spacing: -0.02em;
+      text-wrap: balance;
+    }
+
+    .section-subtitle {
+      color: var(--muted);
+      max-width: 72ch;
+      font-size: clamp(1rem, 1.5vw, 1.08rem);
+      margin-bottom: 24px;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 90;
+      min-height: var(--header-h);
+      transition: background var(--ease), box-shadow var(--ease), backdrop-filter var(--ease);
+      border-bottom: 1px solid transparent;
+    }
+
+    .site-header.scrolled {
+      background: rgba(255, 248, 252, 0.85);
+      border-color: rgba(155, 59, 101, 0.12);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 12px 26px rgba(110, 40, 73, 0.1);
+    }
+
+    .header-inner {
+      min-height: var(--header-h);
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 800;
+      letter-spacing: -0.01em;
+      font-size: 1.02rem;
+    }
+
+    .brand-mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 10px;
+      background:
+        radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.88), transparent 38%),
+        linear-gradient(145deg, #f1abc8, #c45f8a 64%, #a64570);
+      box-shadow: 0 10px 20px rgba(132, 45, 83, 0.26);
+    }
+
+    .site-nav {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .site-nav a {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: rgba(50, 37, 50, 0.84);
+      padding: 8px 12px;
+      border-radius: 999px;
+      transition: color var(--ease), background var(--ease);
+    }
+
+    .site-nav a:hover,
+    .site-nav a:focus-visible,
+    .site-nav a.active {
+      color: var(--rose-deep);
+      background: rgba(243, 194, 215, 0.58);
+    }
+
+    .menu-toggle {
+      display: none;
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      border: 1px solid rgba(155, 59, 101, 0.2);
+      background: rgba(255, 255, 255, 0.72);
+      margin-left: auto;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .menu-line,
+    .menu-line::before,
+    .menu-line::after {
+      width: 18px;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--rose-deep);
+      position: relative;
+      display: block;
+      transition: transform var(--ease), opacity var(--ease);
+    }
+
+    .menu-line::before,
+    .menu-line::after {
+      content: "";
+      position: absolute;
+      left: 0;
+    }
+
+    .menu-line::before {
+      top: -6px;
+    }
+
+    .menu-line::after {
+      top: 6px;
+    }
+
+    .menu-toggle[aria-expanded="true"] .menu-line {
+      background: transparent;
+    }
+
+    .menu-toggle[aria-expanded="true"] .menu-line::before {
+      transform: translateY(6px) rotate(45deg);
+    }
+
+    .menu-toggle[aria-expanded="true"] .menu-line::after {
+      transform: translateY(-6px) rotate(-45deg);
+    }
+
+    .hero {
+      padding-top: clamp(30px, 7vw, 88px);
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.06fr 0.94fr;
+      gap: clamp(22px, 4vw, 54px);
+      align-items: center;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.3rem, 7vw, 4.8rem);
+      line-height: 0.97;
+      margin-bottom: 10px;
+    }
+
+    .hero h2 {
+      font-size: clamp(1.14rem, 2.2vw, 1.45rem);
+      color: #6d4c62;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: clamp(1rem, 1.55vw, 1.12rem);
+      max-width: 66ch;
+    }
+
+    .hero-photo {
+      position: relative;
+      border-radius: var(--radius-l);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.92);
+      box-shadow: var(--shadow-hero);
+      min-height: clamp(320px, 44vw, 560px);
+      background:
+        linear-gradient(145deg, rgba(255, 255, 255, 0.32), rgba(248, 202, 221, 0.3)),
+        url("images/hero-wave.svg") center/cover no-repeat;
+      padding: 14px;
+    }
+
+    .hero-photo-inner {
+      height: 100%;
+      border-radius: calc(var(--radius-l) - 8px);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.84);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .hero-photo img {
+      object-position: center 20%;
+      filter: saturate(1.05) brightness(1.02);
+    }
+
+    .card-shell {
+      padding: 22px;
+      border-radius: var(--radius-m);
+      border: 1px solid var(--line);
+      background: var(--card);
+      backdrop-filter: blur(10px);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .service-card {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: start;
+      gap: 12px;
+      padding: 20px;
+      border-radius: var(--radius-m);
+      border: 1px solid var(--line);
+      background: var(--card);
+      box-shadow: var(--shadow-soft);
+      transition: transform var(--ease), box-shadow var(--ease), border-color var(--ease);
+    }
+
+    .service-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 22px 44px rgba(108, 38, 71, 0.16);
+      border-color: rgba(155, 59, 101, 0.34);
+    }
+
+    .service-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      font-size: 1.35rem;
+      background: linear-gradient(145deg, rgba(244, 199, 219, 0.8), rgba(255, 255, 255, 0.94));
+      border: 1px solid rgba(155, 59, 101, 0.2);
+      flex-shrink: 0;
+    }
+
+    .service-card h3 {
+      font-size: 1rem;
+      line-height: 1.35;
+      margin-bottom: 6px;
+      color: #5a2d46;
+    }
+
+    .service-price {
+      display: inline-flex;
+      align-items: center;
+      min-height: 30px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(241, 192, 214, 0.5);
+      border: 1px solid rgba(155, 59, 101, 0.22);
+      color: var(--rose-deep);
+      font-weight: 800;
+      font-size: 0.92rem;
+      margin-bottom: 8px;
+    }
+
+    .service-card p {
+      color: var(--muted);
+      font-size: 0.93rem;
+      line-height: 1.55;
+    }
+
+    .products-spotlight {
+      display: grid;
+      grid-template-columns: 1.02fr 0.98fr;
+      gap: 16px;
+      align-items: stretch;
+      margin-top: 18px;
+    }
+
+    .products-copy {
+      display: grid;
+      align-content: start;
+      gap: 16px;
+      background:
+        radial-gradient(circle at 100% 0%, rgba(247, 203, 222, 0.3), transparent 32%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.88), rgba(255, 245, 250, 0.92));
+    }
+
+    .products-copy p {
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.7;
+    }
+
+    .products-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      min-height: 48px;
+      padding: 0 22px;
+      border-radius: 999px;
+      border: 1px solid rgba(155, 59, 101, 0.22);
+      background: rgba(250, 215, 228, 0.52);
+      color: var(--rose-deep);
+      font-weight: 800;
+      transition: transform var(--ease), background var(--ease), border-color var(--ease);
+    }
+
+    .products-link:hover,
+    .products-link:focus-visible {
+      transform: translateY(-2px);
+      background: rgba(250, 215, 228, 0.74);
+      border-color: rgba(155, 59, 101, 0.34);
+    }
+
+    .product-mini-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .product-mini-card {
+      padding: 18px;
+      border-radius: var(--radius-m);
+      border: 1px solid var(--line);
+      background: var(--card);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .product-mini-card span {
+      display: inline-flex;
+      margin-bottom: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(241, 192, 214, 0.46);
+      color: var(--rose-deep);
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .product-mini-card h3 {
+      font-size: 1rem;
+      line-height: 1.35;
+      margin-bottom: 8px;
+      color: #5a2d46;
+    }
+
+    .product-mini-card p {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.58;
+    }
+
+    .why-me {
+      margin-top: 20px;
+      padding: 22px;
+      border-radius: var(--radius-m);
+      border: 1px solid rgba(155, 59, 101, 0.25);
+      color: #fff;
+      background:
+        radial-gradient(circle at 80% -20%, rgba(255, 210, 229, 0.35), transparent 36%),
+        linear-gradient(135deg, #cb6f97 0%, #a54670 100%);
+      box-shadow: var(--shadow-soft);
+      line-height: 1.72;
+    }
+
+    .why-me b {
+      font-weight: 800;
+    }
+
+    .schedule-wrap {
+      max-width: 760px;
+      margin-top: 12px;
+    }
+
+    .schedule-table {
+      width: 100%;
+      border-collapse: collapse;
+      border-radius: var(--radius-m);
+      overflow: hidden;
+      box-shadow: var(--shadow-soft);
+      border: 1px solid var(--line);
+      background: var(--card);
+    }
+
+    .schedule-table td {
+      padding: 14px 16px;
+      border-bottom: 1px dashed rgba(155, 59, 101, 0.2);
+      font-size: 0.96rem;
+      vertical-align: top;
+    }
+
+    .schedule-table tr:last-child td {
+      border-bottom: 0;
+    }
+
+    .schedule-table td:first-child {
+      font-weight: 700;
+      color: #5e3048;
+      width: 220px;
+      white-space: nowrap;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 0.96fr 1.04fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .about-stage {
+      position: relative;
+    }
+
+    .about-stage::after {
+      content: "";
+      position: absolute;
+      right: -10px;
+      bottom: -18px;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: rgba(246, 198, 218, 0.42);
+      filter: blur(12px);
+      z-index: -1;
+    }
+
+    .about-photo-wrap {
+      border-radius: var(--radius-l);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow-soft);
+      min-height: 360px;
+      background: #fce4ee;
+    }
+
+    .about-photo-large {
+      object-position: center 18%;
+    }
+
+    .about-copy {
+      display: grid;
+      gap: 16px;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.65;
+    }
+
+    .about-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    .about-metric {
+      padding: 18px;
+      border-radius: var(--radius-m);
+      border: 1px solid var(--line);
+      background: rgba(255, 248, 252, 0.86);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .about-metric strong {
+      display: block;
+      margin-bottom: 6px;
+      color: #5c2f47;
+      font-size: 1rem;
+      line-height: 1.35;
+    }
+
+    .about-metric span {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.55;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 16px;
+      margin-top: 18px;
+    }
+
+    .map-card {
+      display: grid;
+      gap: 12px;
+      padding: 14px;
+      border-radius: var(--radius-m);
+      border: 1px solid var(--line);
+      background: var(--card);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .map-frame {
+      width: 100%;
+      min-height: 420px;
+      border: 0;
+      border-radius: calc(var(--radius-m) - 6px);
+      background: #f8dce8;
+    }
+
+    .map-caption {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .map-caption strong {
+      display: block;
+      color: #5c2f47;
+      margin-bottom: 4px;
+      font-size: 1rem;
+    }
+
+    .links-panel {
+      margin-top: 16px;
+      padding: 22px;
+      border-radius: var(--radius-m);
+      border: 1px solid var(--line);
+      background: rgba(255, 250, 253, 0.86);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .links-title {
+      margin-bottom: 14px;
+      color: #5c2f47;
+      font-weight: 800;
+      font-size: 1rem;
+      letter-spacing: 0.01em;
+    }
+
+    .links-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .links-list a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 42px;
+      padding: 0 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(155, 59, 101, 0.2);
+      background: rgba(248, 224, 233, 0.54);
+      color: var(--rose-deep);
+      font-size: 0.92rem;
+      font-weight: 700;
+      transition: transform var(--ease), background var(--ease), border-color var(--ease);
+    }
+
+    .links-list a:hover,
+    .links-list a:focus-visible {
+      transform: translateY(-2px);
+      background: rgba(248, 224, 233, 0.8);
+      border-color: rgba(155, 59, 101, 0.3);
+    }
+
+    .info-text {
+      color: var(--muted);
+      font-size: 0.98rem;
+    }
+
+    #tg-form {
+      display: grid;
+      gap: 12px;
+    }
+
+    #tg-form input,
+    #tg-form select,
+    #tg-form textarea {
+      width: 100%;
+      border-radius: 14px;
+      border: 1px solid rgba(155, 59, 101, 0.24);
+      background: rgba(255, 255, 255, 0.86);
+      color: var(--ink);
+      padding: 12px 14px;
+      font: inherit;
+      resize: vertical;
+      transition: border-color var(--ease), box-shadow var(--ease), background var(--ease);
+    }
+
+    #tg-form input:focus,
+    #tg-form select:focus,
+    #tg-form textarea:focus {
+      outline: none;
+      border-color: rgba(155, 59, 101, 0.46);
+      box-shadow: 0 0 0 4px rgba(214, 130, 167, 0.2);
+      background: #fff;
+    }
+
+    #tg-form input[type="submit"] {
+      width: fit-content;
+      min-height: 48px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      background: linear-gradient(135deg, #cb6f97, #a44570);
+      color: #fff;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: 0 14px 30px rgba(132, 43, 81, 0.28);
+      transition: transform var(--ease), box-shadow var(--ease);
+    }
+
+    #tg-form input[type="submit"]:hover,
+    #tg-form input[type="submit"]:focus-visible {
+      transform: translateY(-2px);
+      box-shadow: 0 18px 34px rgba(132, 43, 81, 0.36);
+    }
+
+    .hint {
+      color: #7b5c6e;
+      font-size: 0.88rem;
+      margin-top: -4px;
+    }
+
+    #status {
+      min-height: 24px;
+      font-size: 0.93rem;
+      color: #7c2e53;
+    }
+
+    .social {
+      padding: 22px;
+      border-radius: var(--radius-m);
+      border: 1px solid rgba(255, 255, 255, 0.32);
+      color: #fff;
+      background:
+        radial-gradient(circle at 20% 18%, rgba(248, 188, 214, 0.34), transparent 42%),
+        linear-gradient(138deg, #a54570, #8e345d);
+      box-shadow: var(--shadow-soft);
+      font-size: 0.95rem;
+      line-height: 1.95;
+      word-break: break-word;
+    }
+
+    .social a {
+      color: #fff;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 2px;
+    }
+
+    footer {
+      border-top: 1px solid rgba(155, 59, 101, 0.12);
+      padding: 24px 0 34px;
+      background: rgba(255, 255, 255, 0.52);
+    }
+
+    footer p {
+      color: rgba(74, 50, 63, 0.9);
+      font-size: 0.92rem;
+    }
+
+    .to-top {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      background: rgba(155, 59, 101, 0.94);
+      color: #fff;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 12px 24px rgba(99, 34, 66, 0.28);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: opacity var(--ease), visibility var(--ease), transform var(--ease);
+      z-index: 60;
+    }
+
+    .to-top.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px) scale(0.985);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+      will-change: transform, opacity;
+    }
+
+    .reveal[data-reveal="left"] {
+      transform: translateX(-34px);
+    }
+
+    .reveal[data-reveal="right"] {
+      transform: translateX(34px);
+    }
+
+    .reveal[data-reveal="scale"] {
+      transform: scale(0.94);
+    }
+
+    .reveal.on {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (max-width: 1080px) {
+      .hero-grid,
+      .products-spotlight,
+      .about-grid,
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-photo {
+        max-width: 620px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product-mini-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 860px) {
+      :root {
+        --header-h: 76px;
+      }
+
+      .menu-toggle {
+        display: inline-flex;
+      }
+
+      .site-nav {
+        position: fixed;
+        top: calc(var(--header-h) + 8px);
+        left: 14px;
+        right: 14px;
+        display: grid;
+        gap: 6px;
+        padding: 16px;
+        border-radius: 18px;
+        border: 1px solid rgba(155, 59, 101, 0.18);
+        background: rgba(255, 247, 251, 0.95);
+        box-shadow: 0 20px 34px rgba(108, 37, 72, 0.16);
+        backdrop-filter: blur(12px);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: opacity var(--ease), transform var(--ease), visibility var(--ease);
+      }
+
+      .site-nav.open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .site-nav a {
+        padding: 10px 12px;
+        border-radius: 12px;
+      }
+
+      .schedule-table td {
+        display: block;
+        width: 100%;
+      }
+
+      .schedule-table td:first-child {
+        padding-bottom: 4px;
+      }
+    }
+
+    @media (max-width: 620px) {
+      :root {
+        --container: min(1180px, calc(100% - 28px));
+      }
+
+      .section {
+        padding: 62px 0;
+      }
+
+      #tg-form input[type="submit"] {
+        width: 100%;
+      }
+
+      .product-mini-grid,
+      .about-metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .map-frame {
+        min-height: 320px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+    }
+  </style>
 </head>
 <body>
-<header>
-  <nav>
-    <a href="#services">Услуги</a>
-    <a href="#schedule">Расписание</a>
-    <a href="#about">О специалисте</a>
-    <a href="#contact">Запись</a>
-  </nav>
-</header>
-<main>
-  <section id="hero" class="hero-section">
-  <h1 class="gradient-title">Мария Колесник</h1>
-  <div class="hero-subblock">
-    <h2>Дипломированный подолог, стаж 24 года</h2>
-    <p>
-      Профессиональный медицинский педикюр с индивидуальным подходом.<br>
-      Квалифицированная помощь при любых проблемах стоп и ногтей.<br>
-      Забота о здоровье, эстетике и комфорте клиентов.
-    </p>
-  </div>
-</section>
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="#top" aria-label="На главную">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span>Мария Колесник</span>
+      </a>
 
-<section id="services" class="section">
-  <h2 class="gradient-title">✨ Услуги профессионального педикюра</h2>
-  <div class="services-grid">
-    <div class="service-card">
-      <div class="service-icon">🧼</div>
-      <div>
-        <h3 class="gradient-title">Профилактический аппаратный педикюр</h3>
-        <div class="service-price">3000₽</div>
-        <p>Аппаратная обработка 10 ногтевых пластин + стопы без боли. Удаление огрубевшей кожи, профилактика вросших ногтей. Идеально для регулярного ухода.</p>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">🩺</div>
-      <div>
-        <h3 class="gradient-title">Медицинский аппаратный педикюр</h3>
-        <div class="service-price">3500₽</div>
-        <p>Профессиональная обработка при гиперкератозе, диабетической стопе, псориазе. Безопасно, стерильно, с индивидуальным подбором средств для домашнего ухода.</p>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">✂️</div>
-      <div>
-        <h3 class="gradient-title">Классический педикюр</h3>
-        <div class="service-price">2500₽</div>
-        <p>Обработка стоп бритвенным станком + 10 ногтевых пластин. Техника выполнения в лучших традициях классической школы педикюра.</p>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">🔄</div>
-      <div>
-        <h3 class="gradient-title">Комбинированный педикюр</h3>
-        <div class="service-price">3000₽</div>
-        <p>Сочетание аппарата + классики. Индивидуальный подход к каждой стопе.</p>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">👣</div>
-      <div>
-        <h3 class="gradient-title">Профилактический аппаратный педикюр на здоровые ногти (обработка 10 ногтевых пластин,без стоп)</h3>
-        <div class="service-price">2000₽</div>
-        <p></p>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">👣</div>
-      <div>
-        <h3 class="gradient-title">Медицинский аппаратный педикюр при патологии ногтей средней сложности (обработка 10 ногтевых пластин ,без стоп)</h3>
-        <div class="service-price">2500₽</div>
-        <p>Обработка ногтевых пластин с онихомикозом.</p>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">👣</div>
-      <div>
-        <h3 class="gradient-title">Медицинский аппаратный педикюр при патологии ногтей высокой сложности (обработка 10 ногтевых поастин ,без стоп )</h3>
-        <div class="service-price">3000₽</div>
-        <p>Обработка ногтевых пластин с онихомикозом.</p>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">👣</div>
-      <div>
-        <h3 class="gradient-title">Обработка кожи двух стоп (без патологий)</h3>
-        <div class="service-price">1500₽</div>
-        <p>Для тех, кто ценит быстроту и ухоженный вид.</p>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">🚑</div>
-      <div>
-        <h3 class="gradient-title">Обработка кожи с гиперкератозом, трещинами</h3>
-        <div class="service-price">2000₽</div>
-        <p>Глубокое удаление натоптышей, проработка трещин, псориаз, ДС. Без обработки ногтей.</p>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">🔨</div>
-      <div>
-        <h3 class="gradient-title">Удаление одной мозоли</h3>
-        <div class="service-price">900₽</div>
-        <p>Стержневые, плоские, межпальцевые мозоли.</p>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">💅</div>
-      <div>
-        <h3 class="gradient-title">Обработка вросшего ногтя (1 зона)</h3>
-        <div class="service-price">1000₽</div>
-        <p>Корректируем форму, снимаем воспаление.</p>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">🧵</div>
-      <div>
-        <h3 class="gradient-title">Нитиноловая нить (большой палец)</h3>
-        <div class="service-price">3000₽</div>
-        <p>Коррекция с помощью нитиноловой нити.</p>
-      </div>
-    </div>
-    <div class="service-card">
-      <div class="service-icon">🧵</div>
-      <div>
-        <h3 class="gradient-title">Нитиноловая нить (маленький палец)</h3>
-        <div class="service-price">1500₽</div>
-        <p>Без боли, не влияет на образ жизни.</p>
-      </div>
-    </div>
-  </div>
-  <div class="why-me">
-    <b>Почему стоит выбрать педикюр именно у меня?</b><br>
-    • Все инструменты проходят 3-этапную стерилизацию<br>
-    • Использую гипоаллергенные средства<br>
-    • Индивидуальный подход<br>
-    • Дружелюбная обстановка<br>
-    • Педикюр для ВСЕЙ СЕМЬИ<br>
-    <b>Запишитесь сейчас — ваши ноги скажут «спасибо»!</b>
-  </div>
-</section>
-<section id="schedule" class="section">
-  <h2 class="gradient-title">Расписание</h2>
-  <table>
-    <tr><td>Рабочий день:</td><td>Понедельник, пятница и суббота</td></tr>
-    <tr><td>Время приема:</td><td>10:00, 12:00, 14:00, 16:00, 18:00</td></tr>
-    <tr><td>Адрес:</td><td>Всеволожск, Октябрьский пр.90</td></tr>
-    <tr><td>Отпуск:</td><td>Июль</td></tr>
-  </table>
-</section>
-<section id="about" class="section">
-  <h2 class="gradient-title">О специалисте</h2>
-  <div class="about-photo-wrap">
-    <img src="maria.jpg" alt="Фото Марии Колесник" class="about-photo-large">
-  </div>
-  <div class="about-text">
-    <p>Мария Колесник — дипломированный подолог с медицинским образованием (специальность «Сестринское дело»). Опытный мастер педикюра, оказывающий услуги с соблюдением медицинских стандартов и индивидуальным подходом к каждому клиенту.</p>
-  </div>
-</section>
-<section id="contact" class="section">
-  <h2 class="gradient-title">Оставьте заявку</h2>
-  <p class="info-text" style="margin:8px 0 16px;line-height:1.5">
-    Я принимаю по <b>понедельникам, пятницам и субботам</b>.  
-    Просто оставьте контакты — и я сам свяжусь с вами для согласования удобного времени.
-  </p>
+      <nav class="site-nav" id="siteNav" aria-label="Основное меню">
+        <a href="#services">Услуги</a>
+        <a href="polylook.html">Средства Polylook</a>
+        <a href="#schedule">Расписание</a>
+        <a href="#about">О специалисте</a>
+        <a href="#contact">Запись</a>
+      </nav>
 
-  <form id="tg-form">
-<input type="text" name="name" placeholder="Ваше имя" required />
-<input type="tel" name="phone" placeholder="Ваш телефон" required />
+      <button
+        class="menu-toggle"
+        id="menuToggle"
+        aria-label="Открыть меню"
+        aria-controls="siteNav"
+        aria-expanded="false"
+      >
+        <span class="menu-line"></span>
+      </button>
+    </div>
+  </header>
 
-<select name="preferred_day" aria-label="Предпочтительный день">
-  <option value="" selected>День (необязательно)</option>
-  <option>Понедельник</option>
-  <option>Пятница</option>
-  <option>Суббота</option>
-</select>
-<p class="hint">Работаю: Пн, Пт, Сб. Свяжусь и назначу время.</p>
+  <main>
+    <section id="hero" class="section hero">
+      <div class="container hero-grid">
+        <div class="reveal">
+          <h1 class="gradient-title">Мария Колесник</h1>
+          <h2>Дипломированный подолог, стаж 24 года</h2>
+          <p>
+            Профессиональный медицинский педикюр с индивидуальным подходом.<br />
+            Квалифицированная помощь при любых проблемах стоп и ногтей.<br />
+            Забота о здоровье, эстетике и комфорте клиентов.
+          </p>
+        </div>
+        <div class="hero-photo reveal" data-delay="0.08">
+          <div class="hero-photo-inner">
+            <img src="maria.jpg" alt="Фото Марии Колесник" />
+          </div>
+        </div>
+      </div>
+    </section>
 
-<textarea name="comment" rows="5" placeholder="Пожелания / комментарий (необязательно)"></textarea>
-<input type="submit" value="Оставить заявку" />
-<p id="status" style="margin-top:10px;color:#00ffd0;"></p>
-  </form>
+    <section id="services" class="section">
+      <div class="container">
+        <h2 class="section-title gradient-title reveal">✨ Услуги профессионального педикюра</h2>
 
-  <div class="social">
-    <a href="https://vk.com/maria_masyana" target="_blank">VK</a> |
-    <a href="https://telegram.me/Maria_Masyana" target="_blank">Telegram</a> |
-    <a href="https://max.ru/u/f9LHodD0cOIDWlmFbb30WPRnYsYARx5hOiN-JXVBSh670RS9WmrFy0OLJL8" target="_blank">MAX</a> |
-    <a href="https://wa.me/79215774616" target="_blank">WhatsApp</a> |
-    <a href="https://www.instagram.com/manyunya_kol" target="_blank">Instagram</a> |
-    <a href="tel:+79215774616" target="_blank">Телефон</a>
-  </div>
-</section>
+        <div class="services-grid">
+          <article class="service-card reveal" data-delay="0.02">
+            <div class="service-icon" aria-hidden="true">🧼</div>
+            <div>
+              <h3>Профилактический аппаратный педикюр</h3>
+              <div class="service-price">3000₽</div>
+              <p>Аппаратная обработка 10 ногтевых пластин + стопы без боли. Удаление огрубевшей кожи, профилактика вросших ногтей. Идеально для регулярного ухода.</p>
+            </div>
+          </article>
 
-<footer>
-  <p>© 2025 Мария Колесник — подолог</p>
-</footer>
+          <article class="service-card reveal" data-delay="0.04">
+            <div class="service-icon" aria-hidden="true">🩺</div>
+            <div>
+              <h3>Медицинский аппаратный педикюр</h3>
+              <div class="service-price">3500₽</div>
+              <p>Профессиональная обработка при гиперкератозе, диабетической стопе, псориазе. Безопасно, стерильно, с индивидуальным подбором средств для домашнего ухода.</p>
+            </div>
+          </article>
 
-<!-- Подключение JS -->
-<script src="script.js"></script>
+          <article class="service-card reveal" data-delay="0.06">
+            <div class="service-icon" aria-hidden="true">✂️</div>
+            <div>
+              <h3>Классический педикюр</h3>
+              <div class="service-price">2500₽</div>
+              <p>Обработка стоп бритвенным станком + 10 ногтевых пластин. Техника выполнения в лучших традициях классической школы педикюра.</p>
+            </div>
+          </article>
+
+          <article class="service-card reveal" data-delay="0.08">
+            <div class="service-icon" aria-hidden="true">🔄</div>
+            <div>
+              <h3>Комбинированный педикюр</h3>
+              <div class="service-price">3000₽</div>
+              <p>Сочетание аппарата + классики. Индивидуальный подход к каждой стопе.</p>
+            </div>
+          </article>
+
+          <article class="service-card reveal" data-delay="0.1">
+            <div class="service-icon" aria-hidden="true">👣</div>
+            <div>
+              <h3>Профилактический аппаратный педикюр на здоровые ногти (обработка 10 ногтевых пластин,без стоп)</h3>
+              <div class="service-price">2000₽</div>
+              <p></p>
+            </div>
+          </article>
+
+          <article class="service-card reveal" data-delay="0.12">
+            <div class="service-icon" aria-hidden="true">👣</div>
+            <div>
+              <h3>Медицинский аппаратный педикюр при патологии ногтей средней сложности (обработка 10 ногтевых пластин ,без стоп)</h3>
+              <div class="service-price">2500₽</div>
+              <p>Обработка ногтевых пластин с онихомикозом.</p>
+            </div>
+          </article>
+
+          <article class="service-card reveal" data-delay="0.14">
+            <div class="service-icon" aria-hidden="true">👣</div>
+            <div>
+              <h3>Медицинский аппаратный педикюр при патологии ногтей высокой сложности (обработка 10 ногтевых поастин ,без стоп )</h3>
+              <div class="service-price">3000₽</div>
+              <p>Обработка ногтевых пластин с онихомикозом.</p>
+            </div>
+          </article>
+
+          <article class="service-card reveal" data-delay="0.16">
+            <div class="service-icon" aria-hidden="true">👣</div>
+            <div>
+              <h3>Обработка кожи двух стоп (без патологий)</h3>
+              <div class="service-price">1500₽</div>
+              <p>Для тех, кто ценит быстроту и ухоженный вид.</p>
+            </div>
+          </article>
+
+          <article class="service-card reveal" data-delay="0.18">
+            <div class="service-icon" aria-hidden="true">🚑</div>
+            <div>
+              <h3>Обработка кожи с гиперкератозом, трещинами</h3>
+              <div class="service-price">2000₽</div>
+              <p>Глубокое удаление натоптышей, проработка трещин, псориаз, ДС. Без обработки ногтей.</p>
+            </div>
+          </article>
+
+          <article class="service-card reveal" data-delay="0.2">
+            <div class="service-icon" aria-hidden="true">🔨</div>
+            <div>
+              <h3>Удаление одной мозоли</h3>
+              <div class="service-price">900₽</div>
+              <p>Стержневые, плоские, межпальцевые мозоли.</p>
+            </div>
+          </article>
+
+          <article class="service-card reveal" data-delay="0.22">
+            <div class="service-icon" aria-hidden="true">💅</div>
+            <div>
+              <h3>Обработка вросшего ногтя (1 зона)</h3>
+              <div class="service-price">1000₽</div>
+              <p>Корректируем форму, снимаем воспаление.</p>
+            </div>
+          </article>
+
+          <article class="service-card reveal" data-delay="0.24">
+            <div class="service-icon" aria-hidden="true">🧵</div>
+            <div>
+              <h3>Нитиноловая нить (большой палец)</h3>
+              <div class="service-price">3000₽</div>
+              <p>Коррекция с помощью нитиноловой нити.</p>
+            </div>
+          </article>
+
+          <article class="service-card reveal" data-delay="0.26">
+            <div class="service-icon" aria-hidden="true">🧵</div>
+            <div>
+              <h3>Нитиноловая нить (маленький палец)</h3>
+              <div class="service-price">1500₽</div>
+              <p>Без боли, не влияет на образ жизни.</p>
+            </div>
+          </article>
+        </div>
+
+        <div class="why-me reveal" data-delay="0.08">
+          <b>Почему стоит выбрать педикюр именно у меня?</b><br />
+          • Все инструменты проходят 3-этапную стерилизацию<br />
+          • Использую гипоаллергенные средства<br />
+          • Индивидуальный подход<br />
+          • Дружелюбная обстановка<br />
+          • Педикюр для ВСЕЙ СЕМЬИ<br />
+          <b>Запишитесь сейчас — ваши ноги скажут «спасибо»!</b>
+        </div>
+      </div>
+    </section>
+
+    <section id="polylook" class="section">
+      <div class="container">
+        <div class="products-spotlight">
+          <div class="card-shell products-copy reveal" data-reveal="left">
+            <h2 class="section-title gradient-title">Средства Polylook</h2>
+            <p>Для поддержания результата после процедуры я подбираю средства Polylook для домашнего ухода. Подбор зависит от состояния кожи, ногтей и задач, с которыми вы приходите на приём.</p>
+            <p>На отдельной странице собрана информация о направлениях ухода со средствами Polylook и о том, как поддерживать комфорт и результат между визитами.</p>
+            <a class="products-link" href="polylook.html">Перейти на страницу средств Polylook</a>
+          </div>
+
+          <div class="product-mini-grid">
+            <article class="product-mini-card reveal" data-delay="0.04" data-reveal="scale">
+              <span>После процедуры</span>
+              <h3>Домашний уход</h3>
+              <p>Средства для ежедневной поддержки результата после педикюра и регулярного ухода дома.</p>
+            </article>
+
+            <article class="product-mini-card reveal" data-delay="0.08" data-reveal="scale">
+              <span>По задаче</span>
+              <h3>Индивидуальный подбор</h3>
+              <p>Подбор ухода по состоянию кожи, ногтевых пластин и ощущениям после процедуры.</p>
+            </article>
+
+            <article class="product-mini-card reveal" data-delay="0.12" data-reveal="scale">
+              <span>Комфорт</span>
+              <h3>Поддержка между визитами</h3>
+              <p>Схема домашнего ухода, которая помогает сохранять ощущение чистоты и ухоженности дольше.</p>
+            </article>
+
+            <article class="product-mini-card reveal" data-delay="0.16" data-reveal="scale">
+              <span>Уход</span>
+              <h3>Рекомендации по применению</h3>
+              <p>Понятные рекомендации, как использовать средства Polylook дома без перегруза и лишних шагов.</p>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="schedule" class="section">
+      <div class="container schedule-wrap">
+        <h2 class="section-title gradient-title reveal">Расписание</h2>
+        <table class="schedule-table reveal" data-delay="0.06">
+          <tr><td>Рабочий день:</td><td>Понедельник, пятница и суббота</td></tr>
+          <tr><td>Время приема:</td><td>10:00, 12:00, 14:00, 16:00, 18:00</td></tr>
+          <tr><td>Адрес:</td><td>Всеволожск, Октябрьский пр.90</td></tr>
+          <tr><td>Отпуск:</td><td>Июль</td></tr>
+        </table>
+      </div>
+    </section>
+
+    <section id="about" class="section">
+      <div class="container">
+        <h2 class="section-title gradient-title reveal">О специалисте</h2>
+        <div class="about-grid">
+          <div class="about-stage reveal" data-delay="0.04" data-reveal="left">
+            <div class="about-photo-wrap">
+              <img src="maria.jpg" alt="Фото Марии Колесник" class="about-photo-large" />
+            </div>
+          </div>
+
+          <div class="about-copy">
+            <div class="card-shell about-text reveal" data-delay="0.1" data-reveal="right">
+              <p>Мария Колесник — дипломированный подолог с медицинским образованием (специальность «Сестринское дело»). Опытный мастер педикюра, оказывающий услуги с соблюдением медицинских стандартов и индивидуальным подходом к каждому клиенту.</p>
+            </div>
+
+            <div class="about-metrics">
+              <article class="about-metric reveal" data-delay="0.14" data-reveal="scale">
+                <strong>24 года</strong>
+                <span>стаж работы и практический опыт в уходе за стопами и ногтями.</span>
+              </article>
+
+              <article class="about-metric reveal" data-delay="0.18" data-reveal="scale">
+                <strong>Медицинское образование</strong>
+                <span>специальность «Сестринское дело» и внимание к медицинским стандартам.</span>
+              </article>
+
+              <article class="about-metric reveal" data-delay="0.22" data-reveal="scale">
+                <strong>Индивидуальный подход</strong>
+                <span>подбор ухода и решений под конкретный запрос каждого клиента.</span>
+              </article>
+
+              <article class="about-metric reveal" data-delay="0.26" data-reveal="scale">
+                <strong>Соблюдение стандартов</strong>
+                <span>услуги с аккуратной работой, вниманием к деталям и состоянию клиента.</span>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="section">
+      <div class="container">
+        <h2 class="section-title gradient-title reveal">Оставьте заявку</h2>
+        <p class="info-text reveal" style="margin: 8px 0 16px; line-height: 1.5" data-delay="0.04">
+          Я принимаю по <b>понедельникам, пятницам и субботам</b>.  
+          Просто оставьте контакты — и я сам свяжусь с вами для согласования удобного времени.
+        </p>
+
+        <div class="contact-grid">
+          <div class="card-shell reveal" data-delay="0.08" data-reveal="left">
+            <form id="tg-form">
+              <input type="text" name="name" placeholder="Ваше имя" required />
+              <input type="tel" name="phone" placeholder="Ваш телефон" required />
+
+              <select name="preferred_day" aria-label="Предпочтительный день">
+                <option value="" selected>День (необязательно)</option>
+                <option>Понедельник</option>
+                <option>Пятница</option>
+                <option>Суббота</option>
+              </select>
+
+              <p class="hint">Работаю: Пн, Пт, Сб. Свяжусь и назначу время.</p>
+
+              <textarea name="comment" rows="5" placeholder="Пожелания / комментарий (необязательно)"></textarea>
+              <input type="submit" value="Оставить заявку" />
+              <p id="status" style="margin-top: 10px; color: #7c2e53;"></p>
+            </form>
+          </div>
+
+          <div class="map-card reveal" data-delay="0.14" data-reveal="right">
+            <iframe
+              class="map-frame"
+              src="https://yandex.ru/map-widget/v1/?text=%D0%92%D1%81%D0%B5%D0%B2%D0%BE%D0%BB%D0%BE%D0%B6%D1%81%D0%BA%2C%20%D0%9E%D0%BA%D1%82%D1%8F%D0%B1%D1%80%D1%8C%D1%81%D0%BA%D0%B8%D0%B9%20%D0%BF%D1%80.%2090&z=16"
+              title="Карта Яндекс"
+              loading="lazy"
+            ></iframe>
+            <div class="map-caption">
+              <strong>Всеволожск, Октябрьский пр.90</strong>
+              Карта рядом с формой, чтобы было проще сразу сориентироваться по адресу и построить маршрут.
+            </div>
+          </div>
+        </div>
+
+        <div class="links-panel reveal" data-delay="0.18">
+          <p class="links-title">Ссылки</p>
+          <div class="links-list">
+            <a href="https://vk.com/maria_masyana" target="_blank" rel="noopener noreferrer">VK</a>
+            <a href="https://telegram.me/Maria_Masyana" target="_blank" rel="noopener noreferrer">Telegram</a>
+            <a href="https://max.ru/u/f9LHodD0cOIDWlmFbb30WPRnYsYARx5hOiN-JXVBSh670RS9WmrFy0OLJL8" target="_blank" rel="noopener noreferrer">MAX</a>
+            <a href="https://wa.me/79215774616" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <a href="https://www.instagram.com/manyunya_kol" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="tel:+79215774616" target="_blank" rel="noopener noreferrer">Телефон</a>
+            <a href="https://yandex.ru/maps/?text=%D0%92%D1%81%D0%B5%D0%B2%D0%BE%D0%BB%D0%BE%D0%B6%D1%81%D0%BA%2C%20%D0%9E%D0%BA%D1%82%D1%8F%D0%B1%D1%80%D1%8C%D1%81%D0%BA%D0%B8%D0%B9%20%D0%BF%D1%80.%2090" target="_blank" rel="noopener noreferrer">Яндекс Карты</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>© 2025 Мария Колесник — подолог</p>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" aria-label="Наверх">↑</button>
+
+  <script>
+    (() => {
+      const header = document.querySelector(".site-header");
+      const nav = document.getElementById("siteNav");
+      const menuToggle = document.getElementById("menuToggle");
+      const toTop = document.getElementById("toTop");
+      const navLinks = nav ? Array.from(nav.querySelectorAll('a[href^="#"]')) : [];
+      const revealNodes = Array.from(document.querySelectorAll(".reveal"));
+      const mobileBp = 860;
+
+      const closeMenu = () => {
+        if (!nav || !menuToggle) return;
+        nav.classList.remove("open");
+        menuToggle.setAttribute("aria-expanded", "false");
+      };
+
+      if (menuToggle && nav) {
+        menuToggle.addEventListener("click", () => {
+          const isOpen = nav.classList.toggle("open");
+          menuToggle.setAttribute("aria-expanded", String(isOpen));
+        });
+      }
+
+      document.addEventListener("click", (event) => {
+        const target = event.target;
+        if (!(target instanceof Element)) return;
+
+        const anchor = target.closest('a[href^="#"]');
+        if (anchor) {
+          const href = anchor.getAttribute("href");
+          if (href && href.length > 1) {
+            const section = document.querySelector(href);
+            if (section) {
+              event.preventDefault();
+              const offset = header ? header.offsetHeight + 6 : 0;
+              const top = section.getBoundingClientRect().top + window.scrollY - offset;
+              window.scrollTo({ top: Math.max(top, 0), behavior: "smooth" });
+            }
+          }
+          closeMenu();
+          return;
+        }
+
+        if (
+          nav &&
+          menuToggle &&
+          nav.classList.contains("open") &&
+          !target.closest("#siteNav") &&
+          !target.closest("#menuToggle")
+        ) {
+          closeMenu();
+        }
+      });
+
+      window.addEventListener(
+        "resize",
+        () => {
+          if (window.innerWidth > mobileBp) closeMenu();
+        },
+        { passive: true }
+      );
+
+      const onScroll = () => {
+        if (header) header.classList.toggle("scrolled", window.scrollY > 16);
+        if (toTop) toTop.classList.toggle("show", window.scrollY > 520);
+
+        if (!navLinks.length) return;
+        const marker = window.scrollY + (header ? header.offsetHeight : 0) + 100;
+        let current = navLinks[0];
+
+        for (const link of navLinks) {
+          const section = document.querySelector(link.getAttribute("href"));
+          if (section && section.offsetTop <= marker) current = link;
+        }
+
+        navLinks.forEach((link) => link.classList.remove("active"));
+        current.classList.add("active");
+      };
+
+      window.addEventListener("scroll", onScroll, { passive: true });
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeMenu();
+      });
+
+      if (toTop) {
+        toTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+      }
+
+      onScroll();
+
+      if (revealNodes.length) {
+        revealNodes.forEach((node) => {
+          const delay = Number.parseFloat(node.dataset.delay || "0");
+          if (!Number.isNaN(delay) && delay > 0) node.style.transitionDelay = `${delay}s`;
+        });
+
+        const observer = new IntersectionObserver(
+          (entries, obs) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add("on");
+              obs.unobserve(entry.target);
+            });
+          },
+          { threshold: 0.14, rootMargin: "0px 0px -8% 0px" }
+        );
+
+        revealNodes.forEach((node) => observer.observe(node));
+      }
+
+      const form = document.getElementById("tg-form");
+      const statusNode = document.getElementById("status");
+
+      if (form && statusNode) {
+        form.addEventListener("submit", function (e) {
+          e.preventDefault();
+
+          const name = this.name.value.trim();
+          const phone = this.phone.value.trim();
+          const preferredDay = this.preferred_day.value.trim();
+          const comment = this.comment.value.trim();
+
+          if (!name || !phone) {
+            statusNode.textContent = "❌ Укажите имя и телефон.";
+            return;
+          }
+
+          const lines = [
+            "🦶 Новая заявка",
+            `👤 Имя: ${name}`,
+            `📞 Телефон: ${phone}`,
+            preferredDay ? `🗓 Предпочтительный день: ${preferredDay}` : null,
+            comment ? `💬 Комментарий: ${comment}` : null
+          ].filter(Boolean);
+
+          const message = lines.join("\n");
+
+          fetch("https://api.telegram.org/bot7673985541:AAH2PnkO-TW1i09ZSHFwMLa7Gj8NghOZi14/sendMessage", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              chat_id: "2091631815",
+              text: message
+            })
+          })
+            .then((res) => {
+              if (res.ok) {
+                statusNode.textContent = "✅ Заявка отправлена! Я свяжусь с вами.";
+                this.reset();
+              } else {
+                statusNode.textContent = "❌ Ошибка при отправке. Попробуйте ещё раз.";
+              }
+            })
+            .catch(() => {
+              statusNode.textContent = "❌ Не удалось отправить сообщение.";
+            });
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
