@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://podologmariya.ru/</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://podologmariya.ru/maria.jpg</image:loc>
+      <image:caption>Подолог Мария Колесник во Всеволожске</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://podologmariya.ru/images/sterilization-detail.png</image:loc>
+      <image:caption>Стерильные профессиональные инструменты подолога</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://podologmariya.ru/images/contact-visual-clean.png</image:loc>
+      <image:caption>Кабинет подолога Марии Колесник во Всеволожске</image:caption>
+    </image:image>
+  </url>
+  <url>
+    <loc>https://podologmariya.ru/podolog-vsevolozhsk.html</loc>
+    <lastmod>2026-09-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://podologmariya.ru/images/contact-visual-clean.png</image:loc>
+      <image:caption>Кабинет подолога во Всеволожске</image:caption>
+    </image:image>
+  </url>
+</urlset>
